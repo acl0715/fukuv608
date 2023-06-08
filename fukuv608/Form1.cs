@@ -4,16 +4,25 @@ namespace fukuv608
 {
     public partial class Form1 : Form
     {
-        int vx = -5;
-        int vy = -5;
+        static Random rand = new Random();
+
+        int vx = rand.Next(-5, 66);
+        int vy = rand.Next(-5,66);
+        int iTime = 0;
 
         public Form1()
         {
             InitializeComponent();
+            label1.Left = rand.Next(ClientSize.Width - label1.Width);
+            label1.Top = rand.Next(ClientSize.Height-label1.Height);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+
+            iTime++;
+            label5.Text = $"{iTime}";
+
 
             label1.Left += vx;
             label1.Top += vy;
@@ -69,12 +78,12 @@ namespace fukuv608
             label4.Left = fpos.X - label4.Width / 2;
             label4.Top = fpos.Y - label4.Height / 2;
 
-            if ((label1.Left < fpos.X) && (label1.Right > fpos.X) && 
+            if ((label1.Left < fpos.X) && (label1.Right > fpos.X) &&
                 (label1.Top < fpos.Y) && (label1.Bottom > fpos.Y))
             {
                 timer1.Enabled = false;
             }
-            
+
 
 
         }
@@ -86,6 +95,11 @@ namespace fukuv608
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }
